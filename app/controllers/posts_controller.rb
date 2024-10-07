@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]  # Only allow authenticated users to create/edit
-end
 
   def index
     @posts = Post.all
@@ -48,8 +47,4 @@ end
   def post_params
     params.require(:post).permit(:title, :content)
   end
-endclass PostsController < ApplicationController
-
-before_action :authenticate_user!, only: [:edit, :update, :destroy]
-
 end
