@@ -83,3 +83,8 @@ production:
   database: myblog_production
   username: myblog
   password: <%= ENV["MYBLOG_DATABASE_PASSWORD"] %>
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5
+  timeout: 5000

@@ -1,6 +1,8 @@
 require_relative "boot"
 
 require "rails/all"
+require 'sprockets/railtie'
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,6 +12,9 @@ module Myblog
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
+
+    # Enable Sprockets asset pipeline for older Rails versions
+    config.assets.enabled = true
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -25,3 +30,4 @@ module Myblog
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
