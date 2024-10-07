@@ -1,0 +1,35 @@
+<h1 class="mb-4">All Posts</h1>
+
+<!-- Display Create Post Button Only if User is Logged In -->
+<% if user_signed_in? %>
+  <%= link_to 'Create New Post', new_post_path, class: 'btn btn-primary mb-4' %>
+<% end %>
+
+<!-- List of Posts -->
+<% if @posts.any? %>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4"> <!-- Bootstrap column for responsive grid -->
+        <div class="card mb-4"> <!-- Card container for each post -->
+          <div class="card-body">
+            <!-- Display post title as a card header -->
+            <h5 class="card-title">
+              <%= link_to post.title, post, class: 'text-decoration-none' %> <!-- Card title links to post -->
+            </h5>
+            
+            <!-- Display truncated post content -->
+            <p class="card-text">
+              <%= truncate(post.content, length: 100) %> <!-- Assuming `post.content` is the body of the post -->
+            </p>
+            
+            <!-- Link to read more -->
+            <%= link_to 'Read More', post_path(post), class: 'btn btn-primary btn-sm' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No posts found.</p>
+<% end %>
+

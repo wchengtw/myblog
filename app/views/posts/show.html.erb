@@ -1,0 +1,51 @@
+<h1><%= @post.title %></h1>
+
+<p>
+  <%= @post.content %>
+</p>
+
+<!-- Display Edit and Back to Posts Buttons -->
+<% if user_signed_in? && current_user == @post.user %>
+  <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-warning' %>
+<% end %>
+
+<%= link_to 'Back to Posts', posts_path, class: 'btn btn-secondary' %>
+
+<hr>
+
+<!-- Display Comments Section -->
+<h3>Comments</h3>
+
+<% if @post.comments.any? %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <strong><%= comment.user.email %>:</strong> <%= comment.body %>
+        
+        <!-- Form-based Delete for Comment -->
+        <% if user_signed_in? && comment.user == current_user %>
+          <%= form_with url: post_comment_path(@post, comment), method: :delete, class: 'inline-form' do %>
+            <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments yet.</p>
+<% end %>
+
+<!-- Add a Comment Section -->
+<% if user_signed_in? %>
+  <h4>Add a Comment:</h4>
+  <%= form_with(model: [@post, @post.comments.build]) do |form| %>
+    <div class="form-group">
+      <%= form.label :body %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+    <%= form.submit 'Add Comment', class: 'btn btn-primary' %>
+  <% end %>
+<% else %>
+  <p>You must be logged in to add a comment.</p>
+<% end %>
+
