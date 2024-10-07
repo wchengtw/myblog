@@ -12,4 +12,16 @@
  *
  *= require_tree .
  *= require_self
+
+.btn {
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background-color: #0056b3 !important;
+  color: white !important;
+}
+
+
+
  */
