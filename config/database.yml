@@ -13,6 +13,6 @@ test:
 production:
   <<: *default
   url: <%= ENV['postgresql://blog_afso_user:ylpN2tmO68oqbLOHm5yXXkSOOQQOgJjG@dpg-cs256rl6l47c73bc7cn0-a/blog_afso'] %>
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
