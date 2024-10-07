@@ -1,7 +1,7 @@
 databases:
-  - name: blog_afso
-    databaseName: blog_afso
-    user: blog_afso_user
+  - name: mysite
+    databaseName: mysite
+    user: mysite
     plan: free
 
 services:
@@ -9,7 +9,8 @@ services:
     name: mysite
     runtime: ruby
     plan: free
-    buildCommand: "bundle install && bundle exec rake db:migrate && bundle exec rake assets:precompile"
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"
     envVars:
       - key: DATABASE_URL
@@ -20,4 +21,3 @@ services:
         sync: false
       - key: WEB_CONCURRENCY
         value: 2
-
