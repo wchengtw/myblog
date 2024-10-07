@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
-require 'sprockets/railtie'
+require "sprockets/railtie"
 
 
 # Require the gems listed in Gemfile, including any gems
@@ -30,4 +30,3 @@ module Myblog
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-
