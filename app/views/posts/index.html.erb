@@ -14,14 +14,14 @@
           <div class="card-body">
             <!-- Display post title as a card header -->
             <h5 class="card-title">
-              <%= link_to post.title, post, class: 'text-decoration-none' %> <!-- Card title links to post -->
+              <%= link_to post.title, post, class: 'text-decoration-none' %> <!-- Card title links to the post -->
             </h5>
-            
+
             <!-- Display truncated post content -->
             <p class="card-text">
-              <%= truncate(post.content, length: 100) %> <!-- Assuming `post.content` is the body of the post -->
+              <%= truncate(post.body, length: 100) %> <!-- Assuming `post.body` is the body of the post -->
             </p>
-            
+
             <!-- Link to read more -->
             <%= link_to 'Read More', post_path(post), class: 'btn btn-primary btn-sm' %>
           </div>

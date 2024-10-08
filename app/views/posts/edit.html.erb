@@ -12,19 +12,24 @@
     </div>
   <% end %>
 
+  <!-- Title Field -->
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
+  <!-- Body Field (Previously Content) -->
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label :body %> <!-- Using :body instead of :content -->
+    <%= form.text_area :body, class: 'form-control' %>
   </div>
 
+  <!-- Update Button -->
   <div class="actions">
-    <%= form.submit "Update Post" %>
+    <%= form.submit "Update Post", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
-<%= link_to 'Back', posts_path %>
+<!-- Back Button -->
+<%= link_to 'Back', posts_path, class: 'btn btn-secondary' %>
+
